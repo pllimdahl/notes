@@ -1,40 +1,39 @@
 ---
-tags: CommonTasks
+tags: ShowStart, Networking, Curl, Netcat, GameStart, Games
 ---
 
-intern:
-```
-curl "localhost:3000/show/start?target=0"783 
-```
+<!-- Internal commands -->
+
 
 ```
 curl localhost:3000/game/start/target/0
 ```
 
-ekstern 
+<!-- connect to the socket -->
+
 ```
 nc localhost 4455
 ```
 
+
+<!-- connect from outside -->
 ```
-k
+nc IP_ADDRESS 3120
 ```
 
-old: 
-```
-nc localhost 3120
-```
-
+<!-- Send the gameStart action with target 1 -->
 ```
 {"action": "gameStart", "target": "1"}   
 ```
 
-New:
+<!-- New commands -->
 
+<!-- Connect to the new server -->
 ```
 nc localhost 4455
 ```
 
+<!-- Send the showStart action with target 1 -->
 ```
 {"action": "showStart", "target": "1"}
 ```
