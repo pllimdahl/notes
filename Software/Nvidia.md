@@ -1,4 +1,0 @@
----
-tags: CommonTasks
----
-`nvidia-smi`
