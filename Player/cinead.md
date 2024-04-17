@@ -2,7 +2,7 @@ wget https://storage.googleapis.com/cinemataztic-public/player/cinead-d_0.2.1_al
 && wget https://storage.googleapis.com/cinemataztic-public/player/cinead-p_0.2.1_amd64.deb && sudo apt-get install ./cinead-p_0.2.1_amd64.deb \
 && sudo systemctl enable cinead-d \
 && sudo systemctl restart cinead-d \
-&& rm *.deb \
+&& rm*.deb \
 && sudo systemctl status cinead-d
 
 
