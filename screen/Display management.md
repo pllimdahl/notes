@@ -9,7 +9,7 @@ tags: Display,
 
 <details>
   <summary>### set defaults</summary>
-  *this commands changes to the user player*
+  _this commands changes to the user player_
 </details>
 ```
 sudo su player
