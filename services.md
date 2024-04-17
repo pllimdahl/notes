@@ -80,3 +80,17 @@ cat /opt/DCH-P/logs/*
 ```
 
 <!-- Remember to replace dch-p.service with the name of the service you're troubleshooting. -->
+
+
+
+
+## Disable a Service
+<details>
+  <summary>Click to expand!</summary>
+  Use the following command to disable the dch-p.service from starting on boot:
+</details>
+
+```
+systemctl disable dch-p.service
+```
+
