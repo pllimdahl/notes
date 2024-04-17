@@ -6,6 +6,11 @@ tags: Display,
 #CommonTasks #admin 
 
 ### set defaults
+
+<details>
+  <summary>### set defaults</summary>
+  *this commands changes to the user player*
+</details>
 ```
 sudo su player
 ```
