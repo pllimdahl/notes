@@ -2,38 +2,39 @@
 tags: ShowStart, Networking, Curl, Netcat, GameStart, Games
 ---
 
-<!-- Internal commands -->
+### Internal commands
 
 
 ```
 curl localhost:3000/game/start/target/0
 ```
 
-<!-- connect to the socket -->
+### connect to the socket
 
 ```
 nc localhost 4455
 ```
 
 
-<!-- connect from outside -->
+### connect from outside
 ```
 nc IP_ADDRESS 3120
 ```
+## old:
 
-<!-- Send the gameStart action with target 1 -->
+### Send the gameStart action with target 1
 ```
 {"action": "gameStart", "target": "1"}   
 ```
 
-<!-- New commands -->
+## New commands
 
-<!-- Connect to the new server -->
+### Connect to the new server
 ```
 nc localhost 4455
 ```
 
-<!-- Send the showStart action with target 1 -->
+### Send the showStart action with target 1
 ```
 {"action": "showStart", "target": "1"}
 ```
