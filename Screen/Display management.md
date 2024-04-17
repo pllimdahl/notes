@@ -86,7 +86,7 @@ sudo service gdm restart
 cvt 1920 1080 60
 ```
 
-*Copy the mode string*
+*Copy the mode string and use it with xrandr*
 
 
 
