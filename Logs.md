@@ -6,6 +6,21 @@ tags: CommonTasks, Linux, Logs, Administration, Unity, ErrorLogs
 - [[#log errors:|log errors:]]
 - [[#unity logs|unity logs]]
 
+### see logs:
+
+*List all files in the /var/log directory in human-readable format, sorted by size*
+```
+ls -laSh /var/log
+```
+
+
+*Clear the syslog file*
+```
+sudo truncate -s 0 /var/log/syslog
+```
+
+
+
 ### Monitor logs in real time
 *This command allows you to monitor logs in real time*
 ```
