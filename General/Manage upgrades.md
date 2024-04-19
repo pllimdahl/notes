@@ -1,12 +1,8 @@
----
+`---
 tags: Ubuntu, Updates, Administration, Autoupdate
----
+---`
 
-- [[#Disable autoupdate|Disable autoupdate]]
-- [[#See latest updates|See latest updates]]
-- [[#Update system|Update system]]
-- [[#Upgrade system|Upgrade system]]
-- [[#Check for held back packages|Check for held back packages]]
+
 
 ### Disable autoupdate
 *These commands disable automatic updates*
