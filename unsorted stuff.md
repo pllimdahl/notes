@@ -1,9 +1,9 @@
----
+`---
 tags: Unsorted, RandomCommands, Findings, Miscellaneous, Troubleshooting, Linux, Terminal, Shell
----
+---`
 
 
-## Install Node.js
+### Install Node.js
 
 *The following command downloads and executes a script that installs Node.js. It uses `curl` to download the script and `bash` to execute it. The `-c` option tells `bash` to read commands from the string. The `-fsSL` options tell `curl` to silently fail on server errors, follow redirects, show error messages, and treat the input as a URL to fetch.*
 
