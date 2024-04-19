@@ -1,10 +1,10 @@
----
+`---
 tags: Nvidia, Reinstall, Graphics, Motherboard, BIOS, HWE, SecureBoot, CommonTasks, Services
----
+---`
 
-Here's the translation:
 
-ok so far so good:
+
+
 
 MSI motherboard and HWE 5.13/5.15 do not work with the latest Nvidia driver... reinstalling the driver helps
 
