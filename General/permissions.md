@@ -1,4 +1,4 @@
-## Managing permissions for the 'player' user using the /etc/sudoers.d/player-permissions file
+### Managing permissions for the 'player' user using the /etc/sudoers.d/player-permissions file
 
 The `/etc/sudoers.d/player-permissions` file is used to define the sudo permissions for the 'player' user. Here's how you can manage these permissions:
 
