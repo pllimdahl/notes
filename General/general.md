@@ -1,43 +1,152 @@
----
+`---
 tags: Linux, Administration, SSH, Logrotate, Packages, Timers, Ports, TCP, UDP
----
+---`
 
-- [[#Exit hanging SSH|Exit hanging SSH]]
-- [[#Logrotate|Logrotate]]
-- [[#Find package|Find package]]
-- [[#Check installed recently|Check installed recently]]
-- [[#List timers|List timers]]
-- [[#List open ports|List open ports]]
-- [[#See TCP and UDP|See TCP and UDP]]
+### Change password:
+```
+passwd
+```
+## Manage users
+
+*Add a new user to the system, while creating their home directory and copying initial files.*
+```
+adduser user_name
+```
+*Modify a user's details, such as their username, home directory, or user group.*
+```
+usermod user_name
+```
+*Remove a user from the system, optionally deleting their home directory and mail spool.*
+```
+userdel user_name
+```
 
 ### Exit hanging SSH
-*This command allows you to exit a hanging SSH session*
+*Doing this allows you to exit a hanging SSH session*
 ```
-Enter~.
+Press Enter
+Press ~
+Press .
 ```
+## Find stuff
 
-### Logrotate
-*This command locates the Xorg.conf file*
+
+### Find
+*find files named 'example.txt' in the entire filesystem and in the current directory modified within the last day, respectively*
 ```
-locate -r Xorg.conf$
+find / -type f -name example.txt
+```
+```
+find . -mtime -1
 ```
 see [[Logs]]
 
+### Find systemwide
+*This command finds files named 'example.txt' in the entire filesystem, excluding the /sys and /proc directories*
+```
+sudo find / -path /sys -prune -o -path /proc -prune -o -type f -name example.txt
+```
+
 ### Find package
-*This command lists all installed packages that contain the word "cinemataztic"*
+*List all installed packages that contain the word "cinemataztic"*
 ```
 apt list --installed | grep cinemataztic
 ```
 see [[Manage upgrades]]
 
+### Default xorg location
+*This is the default location of the Xorg configuration file*
+```
+/etc/X11/xorg.conf
+```
+
+### List by size
+*This command lists files in the current directory sorted by size, with the smallest files first*
+```
+ls -lashr
+```
+
+### Find in man
+*This command searches the man page for 'example' for lines containing '-X'*
+```
+man example | grep -- '-X'
+```
+
+### list 10 largest folders
+*List the 10 largest folders in the root directory*
+```
+sudo du -h --max-depth=1 / 2> /dev/null | sort -hr | tail -n +2 | head
+```
+
+*Find all files larger than 100MB in the current directory*
+```
+find . -type f -size +100M
+```
+
+
+
+### Alternative locate
+*This command locates the Xorg.conf file*
+```
+locate -r Xorg.conf$
+```
+
+
+
+
+
+
+
+## Processes
+*These commands list processes owned by the user 'player' and all processes, respectively*
+```
+ps -U player
+```
+```
+ps -aux
+```
+
+*Get Process ID of a certain process, in this example the DCH-P*
+```
+pidof dch-p
+```
+*The following command uses `strace` to trace system calls and signals. Replace `PID` with the process ID you want to trace.*
+```
+sudo strace -p PID
+```
+
+### End process with message
+*This command sends a signal to a process, which can be used to terminate it*
+```
+kill -s message pid
+```
+
+### See where process is logging to
+*This command shows which files a process is writing to*
+```
+lsof -p PID | grep log
+```
+
+## Other
+
+### Clear a file:
+```
+sudo truncate -s 0 /var/log/syslog
+```
+
+
+see [[Logs]]
+
+
+
 ### Check installed recently
-*This command shows the packages that were recently installed*
+*Show  packages that were recently installed*
 ```
 grep " install " /var/log/dpkg.log
 ```
 
 ### List timers
-*This command lists all active timers*
+*lists all active timers*
 ```
 systemctl list-timers
 ```
@@ -58,7 +167,7 @@ sudo ss -ltp
 ```
 
 ### See TCP and UDP
-*This command shows all TCP and UDP connections*
+*Show all TCP and UDP connections*
 ```
 netstat -tupln
 ```
@@ -69,84 +178,22 @@ netstat -tupln
 sudo mv /var/lib/dpkg/info/install-info.postinst /var/lib/dpkg/info/install-info.postinst.bad
 ```
 
-### Default xorg location
-*This is the default location of the Xorg configuration file*
-```
-/etc/X11/xorg.conf
-```
+
 
 ### List latest changed
-*This command lists files in the current directory sorted by modification time, with the most recently modified files last*
+*List files in the current directory sorted by modification time, with the most recently modified files last*
 ```
 ls -ltr
 ```
 
-### List by size
-*This command lists files in the current directory sorted by size, with the smallest files first*
-```
-ls -lashr
-```
 
-### Find in man
-*This command searches the man page for 'example' for lines containing '-X'*
-```
-man example | grep -- '-X'
-```
 
 ### See latest install
-*This command shows the latest installed packages*
+*Show the latest installed packages*
 ```
 grep " install " /var/log/dpkg.log
 ```
 see [[Manage upgrades]]
-
-### Find
-*These commands find files named 'example.txt' in the entire filesystem and in the current directory modified within the last day, respectively*
-```
-find / -type f -name example.txt
-```
-```
-find . -mtime -1
-```
-see [[Logs]]
-
-### Find systemwide
-*This command finds files named 'example.txt' in the entire filesystem, excluding the /sys and /proc directories*
-```
-sudo find / -path /sys -prune -o -path /proc -prune -o -type f -name example.txt
-```
-
-### Make screenshots
-*This command takes a screenshot every 2 seconds and saves it with a timestamp in the filename*
-```
-while true; do scrot '%Y-%m-%d-%H:%M:%S_$wx$h.jpeg' & sleep 2; done
-```
-
-### Processes
-*These commands list processes owned by the user 'player' and all processes, respectively*
-```
-ps -U player
-```
-```
-ps -aux
-```
-
-*These commands Process ID of a certain process, in this example the DCH-P*
-```
-pidof dch-p
-```
-
-### End process with message
-*This command sends a signal to a process, which can be used to terminate it*
-```
-kill -s message pid
-```
-
-### See where process is logging to
-*This command shows which files a process is writing to*
-```
-lsof -p 13143 | grep log
-```
 
 ### SCP send
 *This command copies a file to a remote server using SCP*
@@ -161,7 +208,6 @@ scp -P 46537 /home/lps/Downloads/cinemataztic-config_0.14.3.deb cinemataztic@192
 ```
 
 ### NVIDIA driver version
-*This command shows the version of the NVIDIA driver*
 ```
 grep "X Driver" /var/log/Xorg.0.log
 ```
@@ -185,11 +231,6 @@ sudo nano 20auto-upgrades
 ```
 see [[Manage upgrades]]
 
-### MEGABOI
-*This command performs several operations, including adding a key to the package manager, removing a list of sources, updating the package list, upgrading all packages, removing unused packages, and editing a network configuration file*
-```
- sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1655A0AB68576280 && sudo rm /etc/apt/sources.list.d/chrome.list && sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt autoremove -y && sudo vim /etc/netplan/02-cinemataztic-network-manager.yaml
-```
 
 ### Check boots
 *These commands show information about system boots*
